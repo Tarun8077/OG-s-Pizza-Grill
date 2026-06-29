@@ -1,0 +1,68 @@
+.ui-divider {
+  border: 0;
+  margin: 0;
+}
+
+/* Horizontal line */
+.ui-divider--horizontal {
+  width: 100%;
+  height: 1px;
+  background: var(--color-border);
+}
+
+/* Vertical line */
+.ui-divider--vertical {
+  width: 1px;
+  height: 100%;
+  min-height: var(--space-6);
+  background: var(--color-border);
+}
+
+/* Gradient variant fades at the edges for a softer, premium look. */
+.ui-divider--gradient.ui-divider--horizontal {
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--color-border-strong),
+    transparent
+  );
+}
+.ui-divider--gradient.ui-divider--vertical {
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--color-border-strong),
+    transparent
+  );
+}
+
+/* Labelled divider: line — label — line */
+.ui-divider--labelled {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  width: 100%;
+  height: auto;
+  background: none;
+}
+.ui-divider--labelled::before,
+.ui-divider--labelled::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--color-border);
+}
+.ui-divider--labelled.ui-divider--gradient::before {
+  background: linear-gradient(to right, transparent, var(--color-border-strong));
+}
+.ui-divider--labelled.ui-divider--gradient::after {
+  background: linear-gradient(to left, transparent, var(--color-border-strong));
+}
+.ui-divider__label {
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--color-text-subtle);
+  white-space: nowrap;
+}

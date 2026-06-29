@@ -1,0 +1,41 @@
+/* ============================================================
+   App Shell Layout
+   Structural styling for the Layout wrapper and existing page
+   markup. Full-width by design — all values from design tokens.
+   ============================================================ */
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.layout > main {
+  flex: 1 1 auto;
+  width: 100%;
+}
+
+/* Generic page wrapper used by Menu / About / Contact / NotFound.
+   Centers the page heading and clears the sticky header. */
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - var(--header-height));
+  min-height: calc(100dvh - var(--header-height));
+  padding-block: calc(var(--header-height) / 2 + var(--space-12)) var(--space-24);
+}
+
+.page__actions {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-4);
+  margin-top: var(--space-8);
+}
+
+/* Home page wrapper. Individual sections own their own styling. */
+.home {
+  width: 100%;
+}

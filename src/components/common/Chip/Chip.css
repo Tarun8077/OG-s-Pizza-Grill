@@ -1,0 +1,64 @@
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-body);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--tracking-wide);
+  line-height: 1;
+  color: var(--color-text-muted);
+  background: transparent;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition:
+    color var(--duration-base) var(--ease-standard),
+    background-color var(--duration-base) var(--ease-standard),
+    border-color var(--duration-base) var(--ease-standard),
+    transform var(--duration-fast) var(--ease-out);
+}
+
+/* ---------- Sizes ---------- */
+.chip--sm {
+  padding: var(--space-1) var(--space-3);
+  font-size: var(--text-xs);
+}
+.chip--md {
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--text-sm);
+}
+
+.chip__icon {
+  display: inline-flex;
+  line-height: 0;
+}
+
+/* ---------- States ---------- */
+.chip:hover {
+  color: var(--color-text);
+  border-color: var(--color-accent);
+}
+.chip:active {
+  transform: scale(0.97);
+}
+.chip:focus-visible {
+  outline: 2px solid var(--color-ring);
+  outline-offset: 2px;
+}
+
+.chip--selected {
+  color: var(--color-on-accent);
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+}
+.chip--selected:hover {
+  color: var(--color-on-accent);
+  background: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
+}
+
+.chip:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+  transform: none;
+}

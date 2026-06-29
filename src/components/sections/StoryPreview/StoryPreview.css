@@ -1,0 +1,71 @@
+.story__grid {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: clamp(var(--space-8), 6vw, var(--space-20));
+  align-items: center;
+}
+
+.story__media {
+  position: relative;
+}
+
+/* A warm offset frame behind the portrait for an editorial, layered feel. */
+.story__media::before {
+  content: '';
+  position: absolute;
+  inset: var(--space-5) calc(-1 * var(--space-5)) calc(-1 * var(--space-5)) var(--space-5);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-lg);
+  z-index: -1;
+}
+
+.story__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-4);
+}
+
+.story__title {
+  margin: var(--space-2) 0 var(--space-2);
+  color: var(--color-text);
+  max-width: 18ch;
+}
+
+.story__para {
+  font-size: var(--text-md);
+  color: var(--color-text-muted);
+  max-width: 56ch;
+}
+
+.story__signoff-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+}
+
+.story__signoff {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--text-xl);
+  color: var(--color-accent);
+}
+
+.story__cta {
+  margin-top: var(--space-2);
+}
+
+@media (max-width: 860px) {
+  .story__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-10);
+  }
+  .story__media {
+    max-width: 26rem;
+  }
+  .story__media::before {
+    inset: var(--space-4) calc(-1 * var(--space-4)) calc(-1 * var(--space-4)) var(--space-4);
+  }
+}

@@ -1,0 +1,225 @@
+/* ============================================================
+   OG's Pizza & Grill — Design Tokens
+   A single source of truth for the visual language.
+   Warm-luxury palette: charcoal espresso, ember red, antique gold,
+   and warm cream. Editorial typography pairing serif display + sans.
+   ============================================================ */
+
+:root {
+  /* ----------------------------------------------------------
+     1. COLOR — RAW PALETTE
+     Warm, restaurant-inspired ramps. Use semantic tokens below
+     in components rather than these raw values directly.
+     ---------------------------------------------------------- */
+
+  /* Espresso / charcoal (warm-toned darks) */
+  --palette-espresso-950: #120c08;
+  --palette-espresso-900: #1a120b;
+  --palette-espresso-800: #241810;
+  --palette-espresso-700: #2f2016;
+  --palette-espresso-600: #3d2b1d;
+
+  /* Ember (primary brand red — fired-tomato) */
+  --palette-ember-700: #9a2f15;
+  --palette-ember-600: #bb3a1a;
+  --palette-ember-500: #d34423;
+  --palette-ember-400: #e25b35;
+  --palette-ember-300: #ec7f5f;
+
+  /* Gold (antique brass accent) */
+  --palette-gold-600: #b8862f;
+  --palette-gold-500: #d4a24e;
+  --palette-gold-400: #e3bd74;
+  --palette-gold-300: #efd49e;
+
+  /* Basil (subtle herb green for tertiary accents) */
+  --palette-basil-600: #4f6a3c;
+  --palette-basil-500: #6b8a4f;
+
+  /* Cream / warm neutrals */
+  --palette-cream-50: #faf6ef;
+  --palette-cream-100: #f4ecdf;
+  --palette-cream-200: #e8dac4;
+  --palette-sand-300: #cdb89c;
+  --palette-stone-400: #9c8b76;
+  --palette-stone-500: #756657;
+
+  /* Functional */
+  --palette-success: #5d8a3a;
+  --palette-warning: #d9a441;
+  --palette-danger: #c0392b;
+
+  /* ----------------------------------------------------------
+     2. COLOR — SEMANTIC TOKENS (dark premium theme)
+     ---------------------------------------------------------- */
+  --color-bg: var(--palette-espresso-900);
+  --color-bg-deep: var(--palette-espresso-950);
+  --color-surface: var(--palette-espresso-800);
+  --color-surface-raised: var(--palette-espresso-700);
+  --color-surface-overlay: rgba(26, 18, 11, 0.92);
+
+  --color-text: var(--palette-cream-50);
+  --color-text-muted: var(--palette-sand-300);
+  --color-text-subtle: var(--palette-stone-400);
+  --color-text-inverse: var(--palette-espresso-900);
+
+  --color-primary: var(--palette-ember-500);
+  --color-primary-hover: var(--palette-ember-400);
+  --color-primary-active: var(--palette-ember-600);
+  --color-on-primary: var(--palette-cream-50);
+
+  --color-accent: var(--palette-gold-500);
+  --color-accent-hover: var(--palette-gold-400);
+  --color-on-accent: var(--palette-espresso-950);
+
+  --color-border: rgba(244, 236, 223, 0.12);
+  --color-border-strong: rgba(244, 236, 223, 0.22);
+  --color-ring: var(--palette-gold-400);
+
+  /* Signature warm gradients */
+  --gradient-ember: linear-gradient(135deg, var(--palette-ember-500), var(--palette-gold-500));
+  --gradient-surface: linear-gradient(180deg, var(--palette-espresso-800), var(--palette-espresso-900));
+  --gradient-overlay: linear-gradient(180deg, rgba(18, 12, 8, 0) 0%, rgba(18, 12, 8, 0.85) 100%);
+
+  /* ----------------------------------------------------------
+     3. TYPOGRAPHY — editorial serif display + clean sans body
+     ---------------------------------------------------------- */
+  --font-display: 'Playfair Display', 'Times New Roman', Georgia, serif;
+  --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+
+  /* Modular type scale (~1.25 major third), fluid where it matters */
+  --text-xs: 0.75rem;     /* 12px */
+  --text-sm: 0.875rem;    /* 14px */
+  --text-base: 1rem;      /* 16px */
+  --text-md: 1.125rem;    /* 18px */
+  --text-lg: 1.25rem;     /* 20px */
+  --text-xl: 1.5rem;      /* 24px */
+  --text-2xl: 1.875rem;   /* 30px */
+  --text-3xl: 2.25rem;    /* 36px */
+  --text-4xl: clamp(2.5rem, 1.8rem + 3.2vw, 3.5rem);
+  --text-5xl: clamp(3rem, 2rem + 4.6vw, 4.5rem);
+  --text-6xl: clamp(3.5rem, 2rem + 7vw, 6rem);
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-black: 900;
+
+  --leading-tight: 1.1;
+  --leading-snug: 1.25;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.7;
+
+  --tracking-tighter: -0.03em;
+  --tracking-tight: -0.015em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.04em;
+  --tracking-wider: 0.12em;
+  --tracking-widest: 0.24em;
+
+  /* ----------------------------------------------------------
+     4. SPACING — 4px base scale
+     ---------------------------------------------------------- */
+  --space-0: 0;
+  --space-1: 0.25rem;   /* 4 */
+  --space-2: 0.5rem;    /* 8 */
+  --space-3: 0.75rem;   /* 12 */
+  --space-4: 1rem;      /* 16 */
+  --space-5: 1.25rem;   /* 20 */
+  --space-6: 1.5rem;    /* 24 */
+  --space-8: 2rem;      /* 32 */
+  --space-10: 2.5rem;   /* 40 */
+  --space-12: 3rem;     /* 48 */
+  --space-16: 4rem;     /* 64 */
+  --space-20: 5rem;     /* 80 */
+  --space-24: 6rem;     /* 96 */
+  --space-32: 8rem;     /* 128 */
+
+  /* Layout */
+  --container-max: 1280px;
+  --container-narrow: 800px;
+  --container-wide: 1536px;
+  --container-gutter: clamp(1.25rem, 4vw, 3rem);
+  --header-height: 5rem;
+
+  /* ----------------------------------------------------------
+     5. BORDER RADIUS
+     ---------------------------------------------------------- */
+  --radius-xs: 0.25rem;
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-2xl: 2rem;
+  --radius-pill: 999px;
+  --radius-full: 50%;
+
+  /* ----------------------------------------------------------
+     6. SHADOWS — warm-tinted elevation + accent glows
+     ---------------------------------------------------------- */
+  --shadow-xs: 0 1px 2px rgba(18, 12, 8, 0.4);
+  --shadow-sm: 0 2px 8px rgba(18, 12, 8, 0.45);
+  --shadow-md: 0 8px 24px rgba(18, 12, 8, 0.5);
+  --shadow-lg: 0 18px 48px rgba(18, 12, 8, 0.55);
+  --shadow-xl: 0 32px 72px rgba(18, 12, 8, 0.6);
+  --shadow-glow-ember: 0 12px 40px rgba(211, 68, 35, 0.35);
+  --shadow-glow-gold: 0 12px 40px rgba(212, 162, 78, 0.3);
+  --shadow-inset: inset 0 1px 0 rgba(244, 236, 223, 0.06);
+
+  /* ----------------------------------------------------------
+     7. Z-INDEX scale
+     ---------------------------------------------------------- */
+  --z-below: -1;
+  --z-base: 0;
+  --z-raised: 10;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-header: 300;
+  --z-overlay: 400;
+  --z-drawer: 500;
+  --z-modal: 600;
+  --z-toast: 700;
+  --z-max: 9999;
+
+  /* ----------------------------------------------------------
+     8. ANIMATION — durations + easing
+     ---------------------------------------------------------- */
+  --duration-instant: 75ms;
+  --duration-fast: 150ms;
+  --duration-base: 250ms;
+  --duration-slow: 400ms;
+  --duration-slower: 600ms;
+  --duration-slowest: 900ms;
+
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in: cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-emphasized: cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  /* ----------------------------------------------------------
+     9. BREAKPOINTS (reference tokens)
+     CSS cannot read var() inside @media queries, so these mirror
+     the literal values used in media queries across the app.
+     ---------------------------------------------------------- */
+  --bp-xs: 480px;
+  --bp-sm: 640px;
+  --bp-md: 768px;
+  --bp-lg: 1024px;
+  --bp-xl: 1280px;
+  --bp-2xl: 1536px;
+}
+
+/* Respect users who prefer reduced motion. */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-instant: 0ms;
+    --duration-fast: 0ms;
+    --duration-base: 0ms;
+    --duration-slow: 0ms;
+    --duration-slower: 0ms;
+    --duration-slowest: 0ms;
+  }
+}

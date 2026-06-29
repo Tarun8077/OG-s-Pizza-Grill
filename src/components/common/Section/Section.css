@@ -1,0 +1,21 @@
+.ui-section {
+  position: relative;
+  width: 100%;
+  padding-block: var(--space-24);
+}
+
+.ui-section--sm {
+  padding-block: var(--space-16);
+}
+
+.ui-section--lg {
+  padding-block: var(--space-32);
+}
+
+.ui-section--surface {
+  background: var(--color-surface);
+}
+
+.ui-section--deep {
+  background: var(--color-bg-deep);
+}

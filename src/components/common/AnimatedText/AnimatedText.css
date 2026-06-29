@@ -1,0 +1,21 @@
+.animated-text {
+  display: inline-block;
+}
+
+/* Word-level split: each word is an inline-block so it can transform
+   independently without breaking text flow. */
+.animated-text--split {
+  /* Allow transformed words to render outside the line box during reveal. */
+  overflow: clip;
+  overflow: visible;
+}
+
+.animated-text__word-wrap {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.animated-text__word {
+  display: inline-block;
+  will-change: transform, opacity;
+}

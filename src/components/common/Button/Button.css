@@ -1,0 +1,157 @@
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  font-family: var(--font-body);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--tracking-wide);
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  overflow: hidden;
+  isolation: isolate;
+  transition:
+    transform var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out),
+    background-color var(--duration-base) var(--ease-standard),
+    border-color var(--duration-base) var(--ease-standard),
+    color var(--duration-base) var(--ease-standard);
+}
+
+/* ---------- Sizes ---------- */
+.btn--sm {
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--text-sm);
+}
+.btn--md {
+  padding: var(--space-3) var(--space-6);
+  font-size: var(--text-base);
+}
+.btn--lg {
+  padding: var(--space-4) var(--space-8);
+  font-size: var(--text-md);
+}
+
+.btn--full {
+  display: flex;
+  width: 100%;
+}
+
+.btn__label,
+.btn__icon {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Sheen sweep that animates across the button on hover. */
+.btn__sheen {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(
+    120deg,
+    transparent 20%,
+    rgba(250, 246, 239, 0.25) 50%,
+    transparent 80%
+  );
+  transform: translateX(-120%);
+  transition: transform var(--duration-slower) var(--ease-out);
+  pointer-events: none;
+}
+
+/* ---------- Variant: primary ---------- */
+.btn--primary {
+  color: var(--color-on-primary);
+  background: var(--gradient-ember);
+  box-shadow: var(--shadow-sm);
+}
+.btn--primary:hover {
+  box-shadow: var(--shadow-glow-ember);
+}
+
+/* ---------- Variant: secondary (gold) ---------- */
+.btn--secondary {
+  color: var(--color-on-accent);
+  background: var(--color-accent);
+  box-shadow: var(--shadow-sm);
+}
+.btn--secondary:hover {
+  background: var(--color-accent-hover);
+  box-shadow: var(--shadow-glow-gold);
+}
+
+/* ---------- Variant: outline ---------- */
+.btn--outline {
+  color: var(--color-text);
+  background: transparent;
+  border-color: var(--color-border-strong);
+}
+.btn--outline:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+/* ---------- Variant: ghost ---------- */
+.btn--ghost {
+  color: var(--color-text-muted);
+  background: transparent;
+}
+.btn--ghost:hover {
+  color: var(--color-text);
+  background: rgba(244, 236, 223, 0.06);
+}
+
+/* ---------- Shared interaction states ---------- */
+.btn:hover {
+  transform: translateY(-2px);
+}
+.btn:hover .btn__sheen {
+  transform: translateX(120%);
+}
+.btn:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-xs);
+}
+.btn:focus-visible {
+  outline: 2px solid var(--color-ring);
+  outline-offset: 3px;
+}
+
+/* ---------- Disabled / loading ---------- */
+.btn:disabled,
+.btn[aria-disabled='true'] {
+  cursor: not-allowed;
+  opacity: 0.5;
+  transform: none;
+  box-shadow: none;
+  pointer-events: none;
+}
+.btn--loading {
+  cursor: progress;
+  color: transparent;
+}
+.btn--loading::after {
+  content: '';
+  position: absolute;
+  z-index: 2;
+  width: 1.1em;
+  height: 1.1em;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  border-radius: var(--radius-full);
+  color: var(--color-on-primary);
+  animation: btn-spin var(--duration-slowest) linear infinite;
+}
+
+@keyframes btn-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

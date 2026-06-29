@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//Users/dev/**)",
+      "Bash(npm -v)",
+      "Bash(npm create *)",
+      "Bash(npm install *)",
+      "Bash(npm run *)",
+      "Bash(find src *)",
+      "Bash(node -e \"const p=require\\('./package.json'\\); console.log\\(JSON.stringify\\({...p.dependencies},null,2\\)\\)\")",
+      "Bash(ls *.md)",
+      "Bash(ls \"C:/Users/Bhoomika Sherwal/.claude/projects/C--Users-Bhoomika-Sherwal-ogs-pizza/memory/\")",
+      "Bash(find src/assets -type f)",
+      "Bash(echo \"exit: $?\")",
+      "Bash(echo \"lint exit: $?\")",
+      "Bash(pdftotext -layout \"src/assets/Menu/OG's Pizza and Grill Menu.pdf\" /tmp/menu.txt)",
+      "Read(//tmp/**)"
+    ]
+  }
+}

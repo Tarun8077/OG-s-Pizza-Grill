@@ -1,0 +1,44 @@
+.gallery__head {
+  margin-bottom: var(--space-12);
+}
+
+.gallery__title {
+  margin-top: var(--space-2);
+  color: var(--color-text);
+}
+
+/* Column-based masonry: each image keeps its own aspect ratio, giving a
+   curated, non-uniform editorial rhythm rather than a rigid grid. */
+.gallery__mosaic {
+  column-count: 3;
+  column-gap: var(--space-5);
+}
+
+.gallery__item {
+  margin-bottom: var(--space-5);
+  break-inside: avoid;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+}
+
+/* Slow zoom on hover for a tactile, gallery feel. */
+.gallery__item .image-wrapper__img {
+  transition:
+    opacity var(--duration-slow) var(--ease-out),
+    transform var(--duration-slower) var(--ease-out);
+}
+.gallery__item:hover .image-wrapper__img.is-loaded {
+  transform: scale(1.05);
+}
+
+@media (max-width: 860px) {
+  .gallery__mosaic {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 520px) {
+  .gallery__mosaic {
+    column-count: 1;
+  }
+}
