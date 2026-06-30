@@ -1,12 +1,9 @@
 import { useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
 import { gsap } from '../../../utils/gsap'
+import { prefersReducedMotion } from '../../../utils/motion'
 import { cn } from '../../../utils/classNames'
 import './AnimatedText.css'
-
-const prefersReducedMotion = () =>
-  typeof window !== 'undefined' &&
-  window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
 const FROM_VARS = {
   fade: { opacity: 0 },

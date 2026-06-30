@@ -1,5 +1,6 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
-import { useDocumentTitle } from '../hooks/useDocumentTitle'
+import { useSeo } from '../hooks/useSeo'
+import { ROUTES } from '../utils/constants'
 import { Container } from '../components/common'
 import {
   MenuHero,
@@ -20,8 +21,8 @@ const Menu = () => {
   const [diet, setDiet] = useState('all') // 'all' | 'veg' | 'nonveg'
   const [activeId, setActiveId] = useState(MENU_CATEGORIES[0].id)
 
-  // Document title for this route (no router-level head management in place).
-  useDocumentTitle(MENU_SEO.title)
+  // Per-route head management: title + description + canonical/OG for /menu.
+  useSeo({ title: MENU_SEO.title, description: MENU_SEO.description, path: ROUTES.MENU })
 
   /* Filter + group in one pass, preserving MENU_CATEGORIES order. Categories
      that have no matching dishes drop out entirely so the page never shows an

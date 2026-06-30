@@ -1,7 +1,7 @@
 # OG's Pizza & Grill — Project Status
 
 **Last Updated:** June 30, 2026
-**Status:** 🟢 Milestone 5 complete — About, Gallery, Contact pages + premium footer all live. Build + lint green.
+**Status:** 🟢 Milestone 6 complete — luxury UX layer, micro-interactions, performance, SEO and accessibility polish all shipped. Build + lint green.
 
 ---
 
@@ -183,6 +183,66 @@ Grid widened to four columns with the existing responsive collapse preserved.
 used (no stock, no placeholders, no per-dish food shots), and no business facts
 were invented (no email, no founding date, no chef name, no awards).
 
+### Milestone 6 — Polish: luxury UX, motion, performance, SEO & a11y ✅
+The final premium-polish pass. Resumed from a partially-complete state (PART A &
+B were already shipped and were **preserved untouched**); PART C was finished and
+PARTS D & E verified/completed.
+
+**PART A — Luxury UX layer** (`components/layout/`): `Preloader` (cinematic brand
+reveal, scroll-locked, self-cleaning timers/listeners/GSAP), `ScrollProgress`
+(reading bar + scroll-direction signal), `CustomCursor` (fine-pointer-only
+two-part magnetic cursor), `RouteTransition` (per-navigation GSAP fade/mask wipe,
+scroll-to-top), `RouteFallback` (Suspense fallback for lazy routes). All wired in
+`Layout.jsx`.
+
+**PART B — Micro-interactions:** shared `utils/motion.js` (`prefersReducedMotion`,
+`hasFinePointer`) as the single source of truth for the reduced-motion / pointer
+checks; hover/press/sheen states already live on the component library.
+
+**PART C — Performance:**
+- **Code splitting / dynamic imports** — every non-home route is `lazy()`-loaded
+  behind `<Suspense>` (`App.jsx`); Home stays eager (it's the LCP).
+- **Bundle optimization** — `vite.config.js` `manualChunks` splits `react-vendor`,
+  `gsap-vendor`, `lenis-vendor` into long-cacheable chunks.
+- **Lazy loading / images** — `ImageWrapper` lazy-loads + async-decodes + fades in;
+  the hero LCP image uses `fetchPriority="high"`.
+- **GSAP / ScrollTrigger cleanup** — audited every animated component: all use
+  `gsap.context(...)` + `ctx.revert()` on unmount; `IntersectionObserver`s
+  `disconnect()`, listeners are removed, `requestAnimationFrame` loops are
+  cancelled. `useLenis` now also cancels its rAF on teardown.
+- **Code cleanup** — three components (`Hero`, `Reveal`, `AnimatedText`) that
+  inlined their own `prefersReducedMotion` now import the shared `utils/motion.js`
+  helper (dead-duplication removed). CSS is strictly component-scoped (each
+  component owns + imports its own `.css`), so there are no orphaned stylesheets;
+  design-system tokens/utilities were intentionally **not** pruned (documented,
+  intentionally-complete API).
+
+**PART D — SEO** (`index.html` + `public/` + `hooks/useSeo.js`):
+- Full `<head>`: title, meta description, `theme-color`, **canonical**, robots.
+- **Open Graph** + **Twitter Card** (`summary_large_image`) with `og-cover.jpg`.
+- **JSON-LD** `Restaurant` structured data — verified business details only.
+- `public/`: `robots.txt`, `sitemap.xml` (all 5 routes), `manifest.webmanifest`,
+  `favicon.svg`, apple-touch icon (`icon.jpg`).
+- `useSeo` keeps title / description / OG / Twitter / canonical in sync per route
+  on client-side navigation; now applied on **all** real routes (Menu migrated
+  from title-only to full `useSeo`); the 404 gets its own document title.
+
+**PART E — Accessibility:**
+- **Landmarks**: singular `header` / `nav` / `main` / `footer`; `skip-link` →
+  `#main-content` (focusable `<main tabIndex=-1>`).
+- **ARIA / keyboard**: icon-only controls all carry `aria-label` (hamburger also
+  `aria-expanded` + `aria-controls`); decorative icons `aria-hidden`; all
+  interactive elements are real `<button>`/`<a>`; menu category strip + diet
+  toggle are proper ARIA widgets; Lightbox is a `role="dialog"` with focus trap,
+  Esc/←/→ keys and focus restore.
+- **Focus visibility**: token-driven global `:focus-visible` ring (`reset.css`).
+- **Forms**: `ContactForm` has `htmlFor`/`id` labels, `aria-required`,
+  `aria-invalid`, `aria-describedby` errors, and focus-first-invalid.
+- **Reduced motion**: global CSS override + every motion component checks
+  `prefersReducedMotion()`; `CustomCursor` also requires a fine pointer.
+- **Images**: `alt` required by `ImageWrapper`'s PropTypes; decorative images use
+  `alt=""`.
+
 ---
 
 ## 🎨 Design Tokens Reference
@@ -210,9 +270,11 @@ were invented (no email, no founding date, no chef name, no awards).
 6. ✅ **Gallery page** — filterable masonry + accessible lightbox — *complete*
 7. ✅ **Contact page** — verified info + form UI (backend-ready) — *complete*
 8. ✅ **Premium footer** — verified Visit column added — *complete*
-9. ⬜ Polish — page transitions, parallax, a11y, meta/favicon, performance
+9. ✅ **Polish (Milestone 6)** — luxury UX, micro-interactions, performance, SEO, a11y — *complete*
 
-**Next milestone:** #9 — Polish pass (awaiting approval). *Do not begin without sign-off.*
+**Next milestone:** none outstanding. The site is feature- and polish-complete;
+remaining work is deployment (set the real domain in `utils/constants.js`) and
+wiring the contact form to a real backend endpoint. See `FINAL_REVIEW.md`.
 
 ---
 
@@ -254,3 +316,24 @@ npm run lint      # ESLint
 - Responsive: Gallery masonry 3→2→1 columns; Contact grid stacks ≤960px with the
   verified visit details ordered first; footer collapses 4→2→1 columns. All new
   motion (hero reveals, masonry tiles, lightbox) honors `prefers-reduced-motion`.
+
+## ✅ Verification (Milestone 6)
+- Resumed mid-milestone after an interrupted session. PARTS A & B (luxury UX
+  components + micro-interactions) were already shipped and **preserved untouched**.
+- PART C finished: verified GSAP/ScrollTrigger cleanup across all animated
+  components (all use `gsap.context` + `ctx.revert`, observers `disconnect`,
+  listeners removed); added `cancelAnimationFrame` to `useLenis` teardown;
+  consolidated three inlined `prefersReducedMotion` copies onto the shared
+  `utils/motion.js`. Code-split / lazy-loaded / chunked bundle confirmed.
+- PART D verified complete and made consistent: migrated the Menu route from
+  title-only to full `useSeo`; gave the 404 a document title. `index.html` head,
+  `robots.txt`, `sitemap.xml`, `manifest.webmanifest`, favicon, apple-touch icon,
+  canonical and JSON-LD all present and internally consistent.
+- PART E verified complete: landmarks, skip link, ARIA on all icon-only controls,
+  real interactive elements, focus-visible ring, accessible form, dialog focus
+  trap, and reduced-motion coverage.
+- `npm run lint` → **0 errors, 0 warnings**.
+- `npm run build` → success, **228 modules, no warnings/errors**
+  (CSS: index 37.94 kB gzip 7.68 kB; JS: react-vendor 163.47 kB gzip 53.39 kB,
+  gsap-vendor 114.85 kB gzip 45.47 kB, app index 42.28 kB gzip 14.57 kB, route
+  chunks lazy-loaded). No page was redesigned and no working component replaced.

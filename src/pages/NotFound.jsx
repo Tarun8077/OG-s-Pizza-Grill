@@ -1,8 +1,11 @@
 import { Link } from 'react-router-dom'
-import { ROUTES } from '../utils/constants'
+import { useDocumentTitle } from '../hooks/useDocumentTitle'
+import { ROUTES, SITE_NAME } from '../utils/constants'
 import { Container, SectionHeading, Button } from '../components/common'
 
 const NotFound = () => {
+  useDocumentTitle(`Page not found — ${SITE_NAME}`)
+
   return (
     <div className="not-found page">
       <Container>

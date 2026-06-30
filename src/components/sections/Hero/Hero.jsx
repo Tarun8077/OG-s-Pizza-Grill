@@ -1,15 +1,12 @@
 import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { gsap } from '../../../utils/gsap'
+import { prefersReducedMotion } from '../../../utils/motion'
 import { ROUTES } from '../../../utils/constants'
 import { photos } from '../../../assets/images'
 import { HERO } from '../../../data/home'
 import { Button, AnimatedText, Container } from '../../common'
 import './Hero.css'
-
-const prefersReducedMotion = () =>
-  typeof window !== 'undefined' &&
-  window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
 const Hero = () => {
   const sectionRef = useRef(null)

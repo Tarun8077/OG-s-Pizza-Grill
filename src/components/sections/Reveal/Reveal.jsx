@@ -1,10 +1,7 @@
 import { useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
 import { gsap } from '../../../utils/gsap'
-
-const prefersReducedMotion = () =>
-  typeof window !== 'undefined' &&
-  window.matchMedia('(prefers-reduced-motion: reduce)').matches
+import { prefersReducedMotion } from '../../../utils/motion'
 
 /**
  * Scroll-triggered reveal wrapper for non-text content (images, cards, rows).
