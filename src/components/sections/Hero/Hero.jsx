@@ -72,7 +72,7 @@ const Hero = () => {
           className="hero__image"
           src={photos.patioAerialNight}
           alt="OG's Pizza & Grill garden courtyard glowing with warm lamplight at night"
-          fetchpriority="high"
+          fetchPriority="high"
         />
         <div className="hero__scrim" aria-hidden="true" />
       </div>

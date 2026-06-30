@@ -1,0 +1,98 @@
+.sig-highlight {
+  padding-block: var(--space-12);
+  background: var(--color-surface);
+  border-block: 1px solid var(--color-border, rgba(255, 255, 255, 0.07));
+}
+
+.sig-highlight__grid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: clamp(var(--space-6), 5vw, var(--space-12));
+  align-items: center;
+}
+
+.sig-highlight__title {
+  margin: var(--space-2) 0 var(--space-4);
+}
+
+.sig-highlight__text {
+  color: var(--color-text-muted);
+  font-size: var(--text-lg);
+  line-height: 1.65;
+  max-width: 38rem;
+  margin: 0 0 var(--space-6);
+}
+
+.sig-highlight__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+}
+
+.sig-highlight__pick {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.sig-highlight__diet {
+  flex: none;
+}
+
+.sig-highlight__pick-name {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  color: var(--color-text);
+}
+
+.sig-highlight__pick-dots {
+  flex: 1 1 auto;
+  border-bottom: 1px dotted var(--color-text-subtle);
+  opacity: 0.5;
+  transform: translateY(-0.2em);
+}
+
+.sig-highlight__pick-price {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--color-accent);
+}
+
+.sig-highlight__cta {
+  border: none;
+  background: none;
+  padding: 0;
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--color-primary);
+  cursor: pointer;
+  transition: color var(--duration-fast) var(--ease-standard);
+}
+
+.sig-highlight__cta:hover {
+  color: var(--color-accent);
+}
+
+.sig-highlight__cta:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+.sig-highlight__badge {
+  display: inline-flex;
+  margin-top: var(--space-5);
+  margin-left: var(--space-4);
+}
+
+@media (max-width: 860px) {
+  .sig-highlight__grid {
+    grid-template-columns: 1fr;
+  }
+  .sig-highlight__media {
+    max-width: 24rem;
+  }
+}

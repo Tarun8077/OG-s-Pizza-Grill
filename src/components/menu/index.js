@@ -1,0 +1,9 @@
+// Barrel export for the Menu feature components.
+export { default as MenuHero } from './MenuHero'
+export { default as CategoryNav } from './CategoryNav'
+export { default as MenuSearch } from './MenuSearch'
+export { default as DietToggle } from './DietToggle'
+export { default as DishCard } from './DishCard'
+export { default as DietDot } from './DietDot'
+export { default as MenuCategorySection } from './MenuCategorySection'
+export { default as SignatureHighlight } from './SignatureHighlight'

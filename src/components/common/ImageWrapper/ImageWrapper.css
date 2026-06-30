@@ -8,6 +8,45 @@
   background: var(--color-surface);
 }
 
+/* Loading skeleton: a soft shimmer that sits behind the image until it has
+   decoded, then fades out. Purely a ::before so it never blocks pointer or
+   a11y. The reduced-motion reset neutralises the sweep automatically. */
+.image-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      100deg,
+      transparent 20%,
+      rgba(244, 236, 223, 0.06) 40%,
+      rgba(244, 236, 223, 0.12) 50%,
+      rgba(244, 236, 223, 0.06) 60%,
+      transparent 80%
+    ),
+    var(--color-surface);
+  background-size: 220% 100%, 100% 100%;
+  animation: image-skeleton 1.4s var(--ease-standard) infinite;
+  transition: opacity var(--duration-slow) var(--ease-out);
+}
+/* Once the <img> has the is-loaded class, hide the skeleton. */
+.image-wrapper:has(.image-wrapper__img.is-loaded)::before {
+  opacity: 0;
+}
+
+@keyframes image-skeleton {
+  from {
+    background-position:
+      150% 0,
+      0 0;
+  }
+  to {
+    background-position:
+      -50% 0,
+      0 0;
+  }
+}
+
 /* ---------- Radius scale ---------- */
 .image-wrapper--radius-none { border-radius: 0; }
 .image-wrapper--radius-sm { border-radius: var(--radius-sm); }
@@ -16,6 +55,7 @@
 .image-wrapper--radius-xl { border-radius: var(--radius-xl); }
 
 .image-wrapper__img {
+  position: relative;
   width: 100%;
   height: 100%;
   object-fit: cover;

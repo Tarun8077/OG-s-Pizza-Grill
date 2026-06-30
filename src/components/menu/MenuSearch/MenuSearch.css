@@ -1,0 +1,71 @@
+.menu-search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 22rem;
+}
+
+.menu-search__icon {
+  position: absolute;
+  left: 0.9rem;
+  display: inline-flex;
+  color: var(--color-text-subtle);
+  font-size: var(--text-sm);
+  pointer-events: none;
+}
+
+.menu-search__input {
+  width: 100%;
+  padding: 0.65rem 2.4rem 0.65rem 2.4rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border, rgba(255, 255, 255, 0.1));
+  border-radius: var(--radius-pill);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  transition: border-color var(--duration-fast) var(--ease-standard),
+    box-shadow var(--duration-fast) var(--ease-standard);
+}
+
+.menu-search__input::placeholder {
+  color: var(--color-text-subtle);
+}
+
+.menu-search__input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(201, 162, 90, 0.18);
+}
+
+/* Hide the native search clear affordance — we provide our own. */
+.menu-search__input::-webkit-search-cancel-button {
+  appearance: none;
+}
+
+.menu-search__clear {
+  position: absolute;
+  right: 0.6rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: none;
+  border-radius: var(--radius-full);
+  background: var(--color-surface-raised);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: color var(--duration-fast) var(--ease-standard),
+    background-color var(--duration-fast) var(--ease-standard);
+}
+
+.menu-search__clear:hover {
+  color: var(--color-text);
+  background: var(--color-primary);
+}
+
+.menu-search__clear:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}

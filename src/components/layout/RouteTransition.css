@@ -1,0 +1,14 @@
+.route-transition {
+  /* Establishes the stacking context the mask wipes within. */
+  position: relative;
+}
+
+.route-transition__mask {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-overlay);
+  pointer-events: none;
+  transform: scaleY(0);
+  transform-origin: top center;
+  background: var(--color-bg-deep);
+}

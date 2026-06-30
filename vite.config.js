@@ -11,6 +11,17 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     sourcemap: false,
-    minify: 'esbuild'
+    minify: 'esbuild',
+    rollupOptions: {
+      output: {
+        // Split rarely-changing vendor code into long-cacheable chunks so an
+        // app-code change doesn't bust the whole bundle.
+        manualChunks: {
+          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+          'gsap-vendor': ['gsap', 'gsap/ScrollTrigger'],
+          'lenis-vendor': ['lenis']
+        }
+      }
+    }
   }
 })

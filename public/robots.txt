@@ -1,0 +1,5 @@
+# OG's Pizza & Grill
+User-agent: *
+Allow: /
+
+Sitemap: https://www.ogspizzaandgrill.com/sitemap.xml

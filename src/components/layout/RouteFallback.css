@@ -1,0 +1,6 @@
+.route-fallback {
+  min-height: 70vh;
+  display: grid;
+  place-items: center;
+  padding: var(--space-16) var(--container-gutter);
+}

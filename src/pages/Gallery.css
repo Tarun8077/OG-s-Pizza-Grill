@@ -1,0 +1,20 @@
+/* Page-level layout only — the masonry, filter and lightbox own their own
+   visuals. Rhythm mirrors the other routes (header offset + section padding). */
+.gallery-page {
+  padding-top: calc(var(--header-height) + clamp(var(--space-8), 6vw, var(--space-16)));
+  padding-bottom: var(--space-24);
+}
+
+.gallery-page__head {
+  margin-bottom: var(--space-10);
+}
+
+.gallery-page__grid {
+  margin-top: var(--space-10);
+}
+
+@media (max-width: 640px) {
+  .gallery-page__grid {
+    margin-top: var(--space-8);
+  }
+}

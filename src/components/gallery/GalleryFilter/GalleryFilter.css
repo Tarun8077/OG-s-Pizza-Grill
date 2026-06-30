@@ -1,0 +1,23 @@
+.gallery-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  justify-content: center;
+}
+
+@media (max-width: 520px) {
+  .gallery-filter {
+    justify-content: flex-start;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: var(--space-1);
+  }
+  .gallery-filter::-webkit-scrollbar {
+    display: none;
+  }
+  .gallery-filter__chip {
+    flex: 0 0 auto;
+  }
+}

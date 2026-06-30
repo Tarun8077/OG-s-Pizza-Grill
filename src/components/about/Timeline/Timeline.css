@@ -1,0 +1,81 @@
+.timeline__head {
+  margin-bottom: var(--space-12);
+  max-width: 52ch;
+}
+.timeline__title {
+  margin-top: var(--space-2);
+  color: var(--color-text);
+}
+
+.timeline__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-width: 760px;
+}
+
+.timeline__item {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-6);
+  padding-bottom: var(--space-10);
+}
+.timeline__item:last-child {
+  padding-bottom: 0;
+}
+
+/* Connecting line runs through the markers. */
+.timeline__marker {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border-strong);
+  background: var(--color-bg);
+  z-index: var(--z-raised);
+}
+.timeline__item:not(:last-child) .timeline__marker::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: calc(100% + var(--space-10));
+  background: linear-gradient(180deg, var(--color-border-strong), transparent);
+}
+
+.timeline__num {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-accent);
+}
+
+.timeline__body {
+  padding-top: var(--space-2);
+}
+.timeline__label {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  color: var(--color-text);
+  margin-bottom: var(--space-2);
+}
+.timeline__text {
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+  max-width: 52ch;
+}
+
+@media (max-width: 520px) {
+  .timeline__item {
+    gap: var(--space-4);
+  }
+  .timeline__marker {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+}

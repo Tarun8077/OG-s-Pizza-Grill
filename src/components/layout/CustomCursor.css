@@ -1,0 +1,61 @@
+/* Hide the native cursor only when the custom one is active (set in JS, so
+   touch / reduced-motion users keep their normal cursor). */
+.has-custom-cursor,
+.has-custom-cursor * {
+  cursor: none !important;
+}
+
+.cursor {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-max);
+  pointer-events: none;
+  mix-blend-mode: difference;
+}
+
+.cursor__dot,
+.cursor__ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-radius: var(--radius-full);
+  opacity: 0;
+  will-change: transform;
+}
+.cursor__dot.is-visible,
+.cursor__ring.is-visible {
+  opacity: 1;
+}
+
+.cursor__dot {
+  width: 7px;
+  height: 7px;
+  background: var(--palette-cream-50);
+  transition: opacity var(--duration-base) var(--ease-out);
+}
+
+.cursor__ring {
+  width: 38px;
+  height: 38px;
+  border: 1.5px solid var(--palette-cream-50);
+  transition:
+    width var(--duration-base) var(--ease-out),
+    height var(--duration-base) var(--ease-out),
+    opacity var(--duration-base) var(--ease-out),
+    background var(--duration-base) var(--ease-out),
+    border-color var(--duration-base) var(--ease-out);
+}
+
+/* Hover an interactive target → ring grows and fills for a magnetic feel. */
+.cursor__ring.is-hover {
+  width: 64px;
+  height: 64px;
+  background: rgba(244, 236, 223, 0.15);
+  border-color: transparent;
+}
+
+/* Press feedback. */
+.cursor__ring.is-down {
+  width: 30px;
+  height: 30px;
+}

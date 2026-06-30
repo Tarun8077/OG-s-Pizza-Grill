@@ -112,9 +112,8 @@ export const RESERVATION = {
 export const INSTAGRAM = {
   eyebrow: 'From our table to yours',
   title: 'Follow the feed',
-  // NOTE: handle/URL are best-guess — confirm the real account before launch.
   handle: '@ogspizzaandgrill',
-  url: 'https://instagram.com/ogspizzaandgrill',
+  url: 'https://www.instagram.com/ogspizzaandgrill/',
   items: [
     { src: photos.patioDinersNight, alt: 'A full house on a warm evening' },
     { src: photos.icedLatte, alt: 'Iced filter coffee in the afternoon light' },
@@ -127,4 +126,10 @@ export const FOOTER = {
   tagline: 'Sit, Stay, Savour.',
   blurb:
     'Where fire meets flavour. Wood-fired pizzas, the Argentinian grill, and coastal Indian soul — in a pet-friendly garden.',
+}
+
+export const HOME_SEO = {
+  title: "OG's Pizza & Grill — Wood-fired Pizza & Argentinian Grill in Noida",
+  description:
+    'Where fire meets flavour: wood-fired Neapolitan pizzas, the Argentinian grill and coastal Indian soul, served in a pet-friendly garden in Sector 104, Noida. Sit, stay, savour.',
 }

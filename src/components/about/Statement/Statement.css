@@ -1,0 +1,41 @@
+.statement {
+  position: relative;
+  isolation: isolate;
+  padding-block: clamp(var(--space-20), 14vw, var(--space-32));
+  text-align: center;
+  overflow: hidden;
+}
+
+.statement__media {
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-below);
+}
+
+.statement__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.statement__scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at center, rgba(18, 12, 8, 0.55), rgba(18, 12, 8, 0.88)),
+    linear-gradient(180deg, rgba(18, 12, 8, 0.7), rgba(18, 12, 8, 0.7));
+}
+
+.statement__title {
+  margin: var(--space-4) 0 var(--space-6);
+  color: var(--color-text);
+  font-style: italic;
+}
+
+.statement__text {
+  max-width: 60ch;
+  margin-inline: auto;
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+  color: var(--color-text-muted);
+}

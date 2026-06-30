@@ -1,0 +1,32 @@
+/* Contact page layout: form (wider) beside the verified visit/contact card.
+   Stacks to a single column below the lg breakpoint, info first on mobile so
+   the address/hours are reachable without scrolling past the whole form. */
+.contact-page__body {
+  padding-top: 0;
+}
+
+.contact-page__grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: clamp(var(--space-8), 5vw, var(--space-16));
+  align-items: start;
+}
+
+.contact-page__form {
+  background: var(--gradient-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: clamp(var(--space-6), 4vw, var(--space-10));
+  box-shadow: var(--shadow-lg);
+}
+
+@media (max-width: 960px) {
+  .contact-page__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+  /* Visit details first on stacked layouts. */
+  .contact-page__info {
+    order: -1;
+  }
+}

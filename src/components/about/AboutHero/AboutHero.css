@@ -1,0 +1,54 @@
+.about-hero {
+  position: relative;
+  overflow: hidden;
+  padding-block: calc(var(--header-height) + var(--space-16)) var(--space-16);
+  text-align: center;
+}
+
+/* Soft warm radial glow behind the type. */
+.about-hero__glow {
+  position: absolute;
+  top: -20%;
+  left: 50%;
+  width: min(900px, 120%);
+  aspect-ratio: 1;
+  transform: translateX(-50%);
+  background: radial-gradient(
+    circle at center,
+    rgba(211, 68, 35, 0.18),
+    rgba(212, 162, 78, 0.08) 38%,
+    transparent 68%
+  );
+  pointer-events: none;
+  z-index: var(--z-below);
+}
+
+.about-hero__inner {
+  position: relative;
+}
+
+.about-hero__kicker {
+  margin-bottom: var(--space-5);
+}
+
+.about-hero__title {
+  font-family: var(--font-display);
+  font-weight: var(--font-weight-black);
+  font-size: var(--text-6xl);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  margin: 0;
+}
+
+.about-hero__line {
+  display: block;
+}
+.about-hero__line:last-child {
+  color: var(--color-accent);
+  font-style: italic;
+}
+
+.about-hero__lead {
+  margin: var(--space-6) auto 0;
+  max-width: 56ch;
+}

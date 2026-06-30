@@ -1,0 +1,35 @@
+.diet-dot {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  border: 1.5px solid currentColor;
+  border-radius: 3px;
+  line-height: 0;
+}
+
+.diet-dot--md {
+  width: 1.05rem;
+  height: 1.05rem;
+}
+
+.diet-dot--sm {
+  width: 0.85rem;
+  height: 0.85rem;
+  border-width: 1px;
+}
+
+.diet-dot__dot {
+  display: block;
+  width: 52%;
+  height: 52%;
+  border-radius: var(--radius-full);
+  background: currentColor;
+}
+
+.diet-dot--veg {
+  color: var(--palette-success);
+}
+
+.diet-dot--nonveg {
+  color: var(--palette-danger);
+}

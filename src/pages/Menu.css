@@ -1,0 +1,110 @@
+/* Menu page shell — composes the menu feature components. Component-internal
+   styling lives with each component; this file owns only page-level layout:
+   the sticky controls bar, vertical rhythm, and the empty state. */
+
+.menu-page {
+  width: 100%;
+}
+
+/* Sticky filter + category bar. Sits directly beneath the fixed header and
+   stays pinned while the dish sections scroll past underneath it. */
+.menu-controls {
+  position: sticky;
+  top: var(--header-height);
+  z-index: var(--z-sticky, 30);
+  background: color-mix(in srgb, var(--color-bg) 88%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-block: 1px solid var(--color-border);
+}
+
+.menu-controls__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding-block: var(--space-3);
+}
+
+.menu-controls__filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.menu-controls__filters .menu-search {
+  flex: 1 1 18rem;
+  max-width: 28rem;
+}
+
+/* Body rhythm between category sections. */
+.menu-body {
+  padding-block: var(--space-12) var(--space-20);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+/* Empty state when filters/search exclude everything. */
+.menu-empty {
+  text-align: center;
+  padding-block: var(--space-16);
+}
+
+.menu-empty__title {
+  margin: 0 0 var(--space-3);
+}
+
+.menu-empty__text {
+  color: var(--color-text-muted);
+  margin: 0 auto var(--space-6);
+  max-width: 38ch;
+}
+
+.menu-empty__reset {
+  border: 1px solid var(--color-border);
+  background: transparent;
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  padding: 0.7rem 1.4rem;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: border-color var(--duration-fast) var(--ease-standard),
+    color var(--duration-fast) var(--ease-standard);
+}
+
+.menu-empty__reset:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.menu-empty__reset:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+@media (max-width: 640px) {
+  .menu-controls__filters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .menu-controls__filters .menu-search {
+    max-width: none;
+  }
+
+  .menu-body {
+    gap: var(--space-12);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu-controls {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: var(--color-bg);
+  }
+}

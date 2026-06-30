@@ -1,7 +1,7 @@
 # OG's Pizza & Grill — Project Status
 
-**Last Updated:** June 29, 2026
-**Status:** 🟢 Milestone 2 complete — Reusable UI component library in place
+**Last Updated:** June 30, 2026
+**Status:** 🟢 Milestone 5 complete — About, Gallery, Contact pages + premium footer all live. Build + lint green.
 
 ---
 
@@ -88,6 +88,101 @@ PropTypes validation on every component.
   NotFound's back link is now a `<Button as={Link}>`. Dead `.page-header` /
   `.back-home` CSS removed from `App.css`; `.page` recentered.
 
+### Milestone 3 — Home Page (premium hero + sections) ✅
+Location: `src/components/sections/<Section>/` — each with `Section.jsx`,
+`Section.css`, and `index.js`; barrel at `sections/index.js`. Content is
+data-driven via `src/data/home.js`. `pages/Home.jsx` composes the sections in
+order.
+
+| Section | Purpose |
+|---------|---------|
+| **Hero** | Full-bleed night-courtyard image, kicker/headline, dual CTA, GSAP parallax on scroll. (`fetchPriority` on the LCP image.) |
+| **StoryPreview** | Brand story teaser with editorial copy + image. |
+| **SignatureDishes** | Featured menu highlights grid. |
+| **Experience** | Value/atmosphere pillars. |
+| **GalleryPreview** | Photo grid teaser into the gallery. |
+| **ReservationCTA** | Booking call-to-action band. |
+| **InstagramPreview** | Social feed teaser. |
+
+**Supporting pieces:** `sections/Reveal/` (GSAP scroll-reveal wrapper reused
+across sections), `components/layout/Footer.jsx` + `Layout.jsx`, and the
+photo asset map in `src/assets/images.js`.
+
+### Milestone 4 — Menu Page (filterable category grid) ✅
+Data-driven from `src/data/menu.js` (14 categories, full restaurant menu
+extracted verbatim from the brand PDF). Feature components live in
+`src/components/menu/<Component>/` with a barrel at `menu/index.js`.
+
+| Component | Purpose |
+|-----------|---------|
+| **MenuHero** | Editorial typographic hero (page `<h1>`) + category jump-links. |
+| **SignatureHighlight** | Marquee band for curated signature picks (hidden while filtering). |
+| **MenuSearch** | Accessible search field, clear button, `aria-live` result count. |
+| **DietToggle** | Veg / Non-veg / All segmented control (ARIA radiogroup, arrow-key nav). |
+| **CategoryNav** | Scroll-spy category strip with sliding underline indicator. |
+| **MenuCategorySection** | Anchored category region + responsive `DishCard` grid (forwards ref for the spy). |
+| **DishCard** | Dish card with monogram crest (no per-dish photos), diet dot, spicy/bestseller/chef flags, tags, price. |
+| **DietDot** | Indian veg/non-veg square indicator. |
+
+**Page assembly (`pages/Menu.jsx`):**
+- Single-pass `useMemo` filter+group over `MENU_ITEMS`, preserving
+  `MENU_CATEGORIES` order; empty categories drop out so no bare headings show.
+- **Filtering connected:** search matches name/description/tags; diet toggle
+  filters veg/non-veg; live result count feeds `MenuSearch`’s `aria-live`.
+- **Empty state** with a "Clear filters" reset when nothing matches.
+- **Scroll-spy** via `IntersectionObserver` with a thin activation band below
+  the sticky bar; active category drives `CategoryNav`.
+- **Programmatic jumps** reuse the shared Lenis engine (`scrollToTarget`) with
+  an offset measured from the live sticky-bar height (`--header-height` + bar).
+- New page CSS `src/pages/Menu.css` owns only page-level layout: sticky
+  glass controls bar, section rhythm, empty state, responsive stacking
+  (≤640px), and `prefers-reduced-motion` fallback.
+- `MENU_SEO.title` applied to `document.title` for the route.
+
+### Milestone 5 — About, Gallery, Contact & Premium Footer ✅
+The remaining content pages, each data-driven and composed entirely from the
+reusable library + real brand photography. Routes `/gallery`, `/about`,
+`/contact` are all live (`ROUTES.GALLERY` route added in `App.jsx`).
+
+**About page** (`pages/About.jsx`, data `src/data/about.js`) — feature
+components in `src/components/about/<Component>/` with barrel:
+
+| Component | Purpose |
+|-----------|---------|
+| **AboutHero** | Editorial typographic hero, owns the page `<h1>` (GSAP word reveal). |
+| **EditorialSplit** | Reusable alternating image/copy spread; reused across Story, Wood-fired, Ingredients, Experience. |
+| **Statement** | Full-width philosophy band over an atmosphere image. |
+| **Timeline** | "Flame to table" craft sequence (honest, undated — no fabricated history). |
+| **ChefNote** | Centred pull-quote, attributed to *The OG Kitchen* (no invented chef). |
+| **Values** | Four-pillar grid of `Card`s. |
+
+**Gallery page** (`pages/Gallery.jsx`, data `src/data/gallery.js`) — feature
+components in `src/components/gallery/<Component>/` with barrel:
+
+| Component | Purpose |
+|-----------|---------|
+| **GalleryFilter** | Category chips (All / Ambience / Drinks / Interior — honest to what the photos show; no "Food" filter since no food photography exists). Reuses `Chip`. |
+| **GalleryMasonry** | Column-masonry of real photos; each tile is a `<button>` with GSAP scroll-reveal + `ImageWrapper` lazy-load. |
+| **Lightbox** | Accessible `role="dialog"` viewer — Esc/←/→ keys, focus trap + restore, scroll lock via the shared Lenis engine. Indexes into the *filtered* list. |
+
+**Contact page** (`pages/Contact.jsx`, data `src/data/contact.js`) — feature
+components in `src/components/contact/<Component>/` with barrel:
+
+| Component | Purpose |
+|-----------|---------|
+| **ContactHero** | Editorial hero, owns the page `<h1>`. |
+| **ContactInfo** | Verified details only — clickable `tel:` / `wa.me` / Maps links, real address & Mon–Sun 10 AM–11 PM hours, Instagram. **No email** (none verified — intentionally absent). "Get directions" links to the verified Google Maps URL (no external iframe → keeps "local assets only"). |
+| **ContactForm** | Accessible form **UI only, ready for backend** — controlled inputs, client-side validation, `aria-invalid`/`aria-describedby` errors, focus-first-invalid, graceful success state pointing to phone/WhatsApp. A `// TODO` marks where a real POST goes; collects the *visitor's* email, never invents a business one. |
+
+**Premium footer** (`components/layout/Footer.jsx`) — enhanced (not recreated):
+added a verified **Visit** column (address, Mon–Sun hours, `tel:` phone) sourced
+from `data/contact.js`, alongside the existing brand / Explore / Connect columns.
+Grid widened to four columns with the existing responsive collapse preserved.
+
+**Honesty guardrails kept throughout:** only the supplied brand photography is
+used (no stock, no placeholders, no per-dish food shots), and no business facts
+were invented (no email, no founding date, no chef name, no awards).
+
 ---
 
 ## 🎨 Design Tokens Reference
@@ -109,14 +204,15 @@ PropTypes validation on every component.
 
 1. ✅ **Design system & theming foundation** — *complete*
 2. ✅ **Reusable UI component library** — *complete* (12 components)
-3. ⬜ Home page — premium hero + featured/story/CTA sections w/ GSAP reveals
-4. ⬜ Menu page — menu data model + filterable category grid
-5. ⬜ About page — story, values, team
-6. ⬜ Contact page — form + hours/location
-7. ⬜ Premium footer redesign
-8. ⬜ Polish — page transitions, parallax, a11y, meta/favicon, performance
+3. ✅ **Home page** — premium hero + featured/story/CTA sections w/ GSAP reveals — *complete*
+4. ✅ **Menu page** — menu data model + filterable category grid w/ scroll-spy — *complete*
+5. ✅ **About page** — story, values, craft timeline, chef's note — *complete*
+6. ✅ **Gallery page** — filterable masonry + accessible lightbox — *complete*
+7. ✅ **Contact page** — verified info + form UI (backend-ready) — *complete*
+8. ✅ **Premium footer** — verified Visit column added — *complete*
+9. ⬜ Polish — page transitions, parallax, a11y, meta/favicon, performance
 
-**Next milestone:** #3 — Home page (premium hero + sections) (awaiting approval).
+**Next milestone:** #9 — Polish pass (awaiting approval). *Do not begin without sign-off.*
 
 ---
 
@@ -129,6 +225,32 @@ npm run preview   # Preview production build
 npm run lint      # ESLint
 ```
 
-## ✅ Verification (Milestone 2)
+## ✅ Verification (Milestone 3)
+- Fixed lint error in `Hero.jsx`: `fetchpriority` → `fetchPriority` (React DOM prop casing).
 - `npm run lint` → exit 0, clean.
-- `npm run build` → success, 102 modules, no warnings/errors (CSS 23.92 kB gzip 5.47 kB).
+- `npm run build` → success, 140 modules, no warnings/errors
+  (CSS 34.15 kB gzip 7.00 kB, JS 328.10 kB gzip 113.84 kB).
+
+## ✅ Verification (Milestone 4)
+- `npm run lint` → 0 errors. (1 pre-existing `react-refresh/only-export-components`
+  warning in `DishCard.jsx`, which co-exports `dishShape`; left untouched as
+  it is completed Milestone-4 component code and the warning is benign.)
+- `npm run build` → success, 168 modules, no warnings/errors
+  (CSS 46.22 kB gzip 8.86 kB, JS 367.61 kB gzip 125.80 kB).
+- Responsive behavior handled in `Menu.css`: filters stack and the controls
+  bar goes single-column ≤640px; the category strip scrolls horizontally; the
+  dish grid is fluid; `prefers-reduced-motion` drops the sticky-bar blur.
+
+## ✅ Verification (Milestone 5)
+- Resumed from a partially-complete state: About was already finished and was
+  **preserved untouched**. Gallery had components but was missing its `index.js`
+  barrels, `Lightbox.css`, the page, and its route; Contact was a stub.
+- Finished Gallery (barrels + `Lightbox.css` + `pages/Gallery.jsx` + `/gallery`
+  route), built the Contact page + `components/contact/`, and enhanced the footer.
+- `npm run lint` → 0 errors. (Same single pre-existing `react-refresh/only-export-components`
+  warning in `DishCard.jsx`; untouched, benign.)
+- `npm run build` → success, 214 modules, no warnings/errors
+  (CSS 62.45 kB gzip 11.13 kB, JS 399.53 kB gzip 135.04 kB).
+- Responsive: Gallery masonry 3→2→1 columns; Contact grid stacks ≤960px with the
+  verified visit details ordered first; footer collapses 4→2→1 columns. All new
+  motion (hero reveals, masonry tiles, lightbox) honors `prefers-reduced-motion`.

@@ -1,0 +1,40 @@
+.editorial-split__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(var(--space-8), 6vw, var(--space-20));
+  align-items: center;
+}
+
+.editorial-split__content {
+  max-width: 52ch;
+}
+
+.editorial-split__title {
+  margin: var(--space-2) 0 var(--space-6);
+  color: var(--color-text);
+}
+
+.editorial-split__para {
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+}
+.editorial-split__para + .editorial-split__para {
+  margin-top: var(--space-4);
+}
+
+/* Flip the column order for an alternating editorial rhythm. The media is
+   the first DOM child, so reversing places it on the right visually. */
+.editorial-split--reverse .editorial-split__media {
+  order: 2;
+}
+
+@media (max-width: 860px) {
+  .editorial-split__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+  /* Always show image above text on small screens, regardless of reverse. */
+  .editorial-split--reverse .editorial-split__media {
+    order: 0;
+  }
+}

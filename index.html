@@ -2,14 +2,45 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>OG's Pizza & Grill — Wood-fired Pizza & Argentinian Grill in Noida</title>
     <meta
       name="description"
-      content="OG's Pizza & Grill — wood-fired pizza and flame-grilled plates crafted from a family recipe."
+      content="Where fire meets flavour: wood-fired Neapolitan pizzas, the Argentinian grill and coastal Indian soul, served in a pet-friendly garden in Sector 104, Noida. Sit, stay, savour."
     />
+    <link rel="canonical" href="https://www.ogspizzaandgrill.com/" />
+    <meta name="robots" content="index, follow" />
     <meta name="theme-color" content="#1a120b" />
 
+    <!-- Icons & PWA -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icon.jpg" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="OG's Pizza & Grill" />
+    <meta property="og:title" content="OG's Pizza & Grill — Wood-fired Pizza & Argentinian Grill in Noida" />
+    <meta
+      property="og:description"
+      content="Wood-fired Neapolitan pizzas, the Argentinian grill and coastal Indian soul, served in a pet-friendly garden in Sector 104, Noida."
+    />
+    <meta property="og:url" content="https://www.ogspizzaandgrill.com/" />
+    <meta property="og:image" content="https://www.ogspizzaandgrill.com/og-cover.jpg" />
+    <meta property="og:image:alt" content="The lamp-lit garden courtyard at OG's Pizza & Grill at night" />
+    <meta property="og:locale" content="en_IN" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="OG's Pizza & Grill — Wood-fired Pizza & Argentinian Grill in Noida" />
+    <meta
+      name="twitter:description"
+      content="Wood-fired pizzas, the Argentinian grill and coastal Indian soul, in a pet-friendly Noida garden."
+    />
+    <meta name="twitter:image" content="https://www.ogspizzaandgrill.com/og-cover.jpg" />
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -17,7 +48,44 @@
       rel="stylesheet"
     />
 
-    <title>OG's Pizza & Grill — wood-fired pizza and flame-grilled plates crafted from a family recipe.</title>
+    <!-- Structured data: verified business details only -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Restaurant",
+        "name": "OG's Pizza & Grill",
+        "servesCuisine": ["Pizza", "Grill", "Coastal Indian"],
+        "url": "https://www.ogspizzaandgrill.com",
+        "image": "https://www.ogspizzaandgrill.com/og-cover.jpg",
+        "telephone": "+91 98710 66105",
+        "priceRange": "₹₹",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "HA-32, Block A, Sector 104",
+          "addressLocality": "Noida",
+          "addressRegion": "Uttar Pradesh",
+          "postalCode": "201301",
+          "addressCountry": "IN"
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday",
+              "Saturday",
+              "Sunday"
+            ],
+            "opens": "10:00",
+            "closes": "23:00"
+          }
+        ],
+        "sameAs": ["https://www.instagram.com/ogspizzaandgrill/"]
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

@@ -1,0 +1,35 @@
+.menu-category {
+  /* Offset anchor target so smooth-scroll lands below the sticky header + bar. */
+  scroll-margin-top: calc(var(--header-height) + 5rem);
+  padding-block: var(--space-12) var(--space-6);
+}
+
+.menu-category__head {
+  max-width: 46rem;
+  margin-bottom: var(--space-8);
+}
+
+.menu-category__title {
+  margin: var(--space-2) 0 var(--space-3);
+}
+
+.menu-category__tagline {
+  color: var(--color-text-muted);
+  font-size: var(--text-base);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.menu-category__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
+  gap: var(--space-6);
+}
+
+.menu-category__cell {
+  display: flex;
+}
+
+.menu-category__cell > * {
+  width: 100%;
+}

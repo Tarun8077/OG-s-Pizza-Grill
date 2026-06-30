@@ -8,8 +8,8 @@
   margin-inline: auto;
   padding: var(--space-20) var(--container-gutter) var(--space-12);
   display: grid;
-  grid-template-columns: 2fr 1fr 1.4fr;
-  gap: clamp(var(--space-8), 6vw, var(--space-20));
+  grid-template-columns: 1.8fr 0.9fr 1.2fr 1.3fr;
+  gap: clamp(var(--space-8), 5vw, var(--space-16));
 }
 
 /* ---------- Brand column ---------- */
@@ -83,6 +83,34 @@
   color: var(--color-text-muted);
   margin-bottom: var(--space-5);
   max-width: 30ch;
+}
+
+/* ---------- Visit column ---------- */
+.footer__address {
+  font-style: normal;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: var(--text-base);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-4);
+}
+
+.footer__hours {
+  font-size: var(--text-sm);
+  line-height: var(--leading-snug);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-4);
+}
+
+.footer__phone {
+  display: inline-block;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text);
+  transition: color var(--duration-fast) var(--ease-standard);
+}
+.footer__phone:hover {
+  color: var(--color-accent);
 }
 
 /* ---------- Bottom bar ---------- */

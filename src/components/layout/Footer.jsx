@@ -3,6 +3,7 @@ import { FaInstagram } from 'react-icons/fa'
 import { ROUTES, NAV_LINKS, SITE_NAME } from '../../utils/constants'
 import { brand } from '../../assets/images'
 import { FOOTER, INSTAGRAM } from '../../data/home'
+import { CONTACT } from '../../data/contact'
 import { Button } from '../common'
 import './Footer.css'
 
@@ -30,6 +31,27 @@ const Footer = () => {
             ))}
           </ul>
         </nav>
+
+        <div className="footer__col">
+          <h2 className="footer__heading">Visit</h2>
+          <address className="footer__address">
+            {CONTACT.address.lines.map((line) => (
+              <span key={line}>{line}</span>
+            ))}
+          </address>
+          <p className="footer__hours">
+            {CONTACT.hours.map(({ days, time }) => (
+              <span key={days}>
+                {days}
+                <br />
+                {time}
+              </span>
+            ))}
+          </p>
+          <a className="footer__phone" href={CONTACT.phone.href}>
+            {CONTACT.phone.display}
+          </a>
+        </div>
 
         <div className="footer__col">
           <h2 className="footer__heading">Connect</h2>

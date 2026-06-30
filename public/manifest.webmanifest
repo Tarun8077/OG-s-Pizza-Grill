@@ -1,0 +1,14 @@
+{
+  "name": "OG's Pizza & Grill",
+  "short_name": "OG's Pizza",
+  "description": "Wood-fired pizzas, the Argentinian grill and coastal Indian soul in a pet-friendly garden in Sector 104, Noida.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#120c08",
+  "theme_color": "#1a120b",
+  "icons": [
+    { "src": "/favicon.svg", "type": "image/svg+xml", "sizes": "any", "purpose": "any" },
+    { "src": "/icon.jpg", "type": "image/jpeg", "sizes": "512x512", "purpose": "any" }
+  ]
+}

@@ -1,0 +1,22 @@
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: var(--z-toast);
+  pointer-events: none;
+  background: transparent;
+}
+
+.scroll-progress__bar {
+  display: block;
+  height: 100%;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: left center;
+  background: var(--gradient-ember);
+  box-shadow: 0 0 12px rgba(211, 68, 35, 0.5);
+  /* Smooth the value between scroll ticks without lagging the read. */
+  transition: transform 80ms linear;
+}

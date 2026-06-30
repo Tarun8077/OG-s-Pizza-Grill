@@ -1,9 +1,15 @@
 // Centralized app constants.
-export const SITE_NAME = "OG's Pizza"
+export const SITE_NAME = "OG's Pizza & Grill"
+
+/* Canonical production origin — used for <link rel="canonical">, og:url and the
+   sitemap. PLACEHOLDER: confirm/replace with the real domain before deploy.
+   No trailing slash. */
+export const SITE_URL = 'https://www.ogspizzaandgrill.com'
 
 export const ROUTES = {
   HOME: '/',
   MENU: '/menu',
+  GALLERY: '/gallery',
   ABOUT: '/about',
   CONTACT: '/contact',
 }
@@ -13,6 +19,7 @@ export const ROUTES = {
 export const NAV_LINKS = [
   { label: 'Home', path: ROUTES.HOME },
   { label: 'Menu', path: ROUTES.MENU },
+  { label: 'Gallery', path: ROUTES.GALLERY },
   { label: 'About', path: ROUTES.ABOUT },
   { label: 'Contact', path: ROUTES.CONTACT },
 ]
